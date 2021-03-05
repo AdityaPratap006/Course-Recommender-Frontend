@@ -1,0 +1,17 @@
+.message-card-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.message-card-container.by-user {
+    justify-content: flex-end;
+}
+
+.message-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+}
