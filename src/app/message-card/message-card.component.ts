@@ -10,8 +10,11 @@ export class MessageCardComponent implements OnInit {
     @Input() isSentByUser: boolean = false;
     @Input() messageText: string = 'Hello there! Amigos!!';
     @Input() messageType: MessageType = MessageType.SIMPLE_TEXT;
+    shouldAskYesOrNo: boolean = false;
 
     constructor() {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.shouldAskYesOrNo = this.messageType === MessageType.ASK_YES_OR_NO;
+    }
 }

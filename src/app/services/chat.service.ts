@@ -16,7 +16,7 @@ export class ChatService {
         },
         {
             text: `Would you like to view a detailed report of your performance?`,
-            type: MessageType.SIMPLE_TEXT,
+            type: MessageType.ASK_YES_OR_NO,
         },
         {
             text: 'Sure!!',

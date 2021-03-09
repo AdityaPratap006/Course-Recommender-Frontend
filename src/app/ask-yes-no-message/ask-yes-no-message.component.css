@@ -1,0 +1,12 @@
+.btn-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-container button {
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.5rem;
+}
