@@ -1,1 +1,10 @@
-<p>course-card works!</p>
+<div class="card">
+    <img class="card-img-top" [src]="image" alt="course image" />
+    <div class="card-body">
+        <h5 class="card-title">{{ name }}</h5>
+        <small>Rs. {{ price }}</small>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary">Buy</button>
+    </div>
+</div>
