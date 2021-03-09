@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MessageType } from '../models/message.model';
 
 @Component({
     selector: 'app-message-card',
@@ -8,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MessageCardComponent implements OnInit {
     @Input() isSentByUser: boolean = false;
     @Input() messageText: string = 'Hello there! Amigos!!';
+    @Input() messageType: MessageType = MessageType.SIMPLE_TEXT;
 
     constructor() {}
 
