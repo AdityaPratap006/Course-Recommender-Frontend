@@ -1,0 +1,14 @@
+.courses-list-grid {
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-auto-rows: 1fr;
+    background-color: orange;
+}
+
+@media (max-width: 1120px) {
+    .courses-list-grid {
+        grid-template-columns: repeat(1, minmax(15rem, 1fr));
+    }
+}

@@ -9,6 +9,7 @@
 }
 
 .message-card {
+    width: 100%;
     border: 1px solid black;
     border-radius: 10px;
     margin-top: 0.5rem;
@@ -16,12 +17,17 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 1rem;
+    /* background-color: aqua; */
 }
 
-.message-card .message-content {
+.message-content {
     width: 100%;
+    padding: 1rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    /* border: 1pxs solid black; */
 }

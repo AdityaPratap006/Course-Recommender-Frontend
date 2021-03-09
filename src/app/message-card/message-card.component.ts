@@ -11,10 +11,13 @@ export class MessageCardComponent implements OnInit {
     @Input() messageText: string = 'Hello there! Amigos!!';
     @Input() messageType: MessageType = MessageType.SIMPLE_TEXT;
     shouldAskYesOrNo: boolean = false;
+    shouldDisplayCourses: boolean = false;
 
     constructor() {}
 
     ngOnInit(): void {
         this.shouldAskYesOrNo = this.messageType === MessageType.ASK_YES_OR_NO;
+        this.shouldDisplayCourses =
+            this.messageType === MessageType.COURSE_LIST;
     }
 }

@@ -23,6 +23,10 @@ export class ChatService {
             type: MessageType.SIMPLE_TEXT,
             fromUser: true,
         },
+        {
+            text: 'We recommend following courses for you!',
+            type: MessageType.COURSE_LIST,
+        },
     ];
 
     constructor() {}
