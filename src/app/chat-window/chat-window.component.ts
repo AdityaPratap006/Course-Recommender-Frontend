@@ -10,10 +10,56 @@ import { ChatService } from '../services/chat.service';
 })
 export class ChatWindowComponent implements OnInit {
     messages: IMessage[] = [];
+    apiBaseURL: string = `https://course-recommendation-api.herokuapp.com`;
+    testScoreData: TestScoreData | undefined = undefined;
 
     constructor(private chatService: ChatService) {}
 
     ngOnInit(): void {
         this.messages = this.chatService.messageList;
+
+        setTimeout(() => {
+            this.chatService.pushWelcomeMessage();
+        }, 800);
+
+        setTimeout(() => {
+            this.fetchTestScore();
+        }, 1000);
     }
+
+    async fetchTestScore() {
+        try {
+            const response = await fetch(`${this.apiBaseURL}/test_score/${1}`);
+            const data: TestScoreData[] = await response.json();
+            if (data.length === 0) {
+                return;
+            }
+
+            const scoreData = data[0];
+            const totalMarks = +scoreData.total;
+            const obtainedMarks = +scoreData.obtained;
+            this.chatService.pushTestScoreMessage(obtainedMarks, totalMarks);
+            this.testScoreData = scoreData;
+            setTimeout(() => {
+                this.chatService.pushRequestToShowDetailedReportMessage();
+            }, 200);
+        } catch (error) {
+            alert('Something went wrong');
+        }
+    }
+}
+
+interface TestScoreData {
+    _id: string;
+    userId: string;
+    total: number;
+    obtained: number;
+    topicScore: TopicWiseScoreData[];
+}
+
+interface TopicWiseScoreData {
+    name: string;
+    obtained: number;
+    total: number;
+    percentage: number;
 }
