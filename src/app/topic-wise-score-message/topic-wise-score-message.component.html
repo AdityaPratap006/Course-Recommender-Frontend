@@ -1,0 +1,16 @@
+<div>
+    <table class="table-responsive-sm table-bordered">
+        <tr class="d-table-row">
+            <th class="d-table-cell">Topic</th>
+            <th class="d-table-cell">Total Marks</th>
+            <th class="d-table-cell">Marks Obtained</th>
+            <th class="d-table-cell">Percentage</th>
+        </tr>
+        <tr class="d-table-row" *ngFor="let currentTopic of topicWiseScoreData">
+            <td class="d-table-cell">{{ currentTopic.name }}</td>
+            <td class="d-table-cell">{{ currentTopic.total }}</td>
+            <td class="d-table-cell">{{ currentTopic.obtained }}</td>
+            <td class="d-table-cell">{{ currentTopic.percentage }}</td>
+        </tr>
+    </table>
+</div>

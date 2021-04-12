@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IMessage } from '../models/message.model';
 import { ChatService } from '../services/chat.service';
+import { TestScoreData } from '../models/score.model';
 
 @Component({
     selector: 'app-chat-window',
@@ -11,7 +12,6 @@ import { ChatService } from '../services/chat.service';
 export class ChatWindowComponent implements OnInit {
     messages: IMessage[] = [];
     apiBaseURL: string = `https://course-recommendation-api.herokuapp.com`;
-    testScoreData: TestScoreData | undefined = undefined;
 
     constructor(private chatService: ChatService) {}
 
@@ -39,7 +39,7 @@ export class ChatWindowComponent implements OnInit {
             const totalMarks = +scoreData.total;
             const obtainedMarks = +scoreData.obtained;
             this.chatService.pushTestScoreMessage(obtainedMarks, totalMarks);
-            this.testScoreData = scoreData;
+            this.chatService.testScoreData = scoreData;
             setTimeout(() => {
                 this.chatService.pushRequestToShowDetailedReportMessage();
             }, 200);
@@ -47,19 +47,4 @@ export class ChatWindowComponent implements OnInit {
             alert('Something went wrong');
         }
     }
-}
-
-interface TestScoreData {
-    _id: string;
-    userId: string;
-    total: number;
-    obtained: number;
-    topicScore: TopicWiseScoreData[];
-}
-
-interface TopicWiseScoreData {
-    name: string;
-    obtained: number;
-    total: number;
-    percentage: number;
 }

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { IMessage, MessageType } from '../models/message.model';
+import { TestScoreData } from '../models/score.model';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ChatService {
     messageList: IMessage[] = [];
+    testScoreData: TestScoreData | undefined;
 
     constructor() {}
 
@@ -57,6 +59,12 @@ export class ChatService {
     }
 
     pushDetailedReportMessage() {
-        //push detailed report message
+        this.messageList.push({
+            text: 'Your topic wise score is as follows:',
+            type: MessageType.TOPIC_WISE_SCORE,
+        });
+        setTimeout(() => {
+            this.pushCourseListMessage();
+        }, 200);
     }
 }

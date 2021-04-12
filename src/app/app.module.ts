@@ -7,9 +7,10 @@ import { MessageCardComponent } from './message-card/message-card.component';
 import { AskYesNoMessageComponent } from './ask-yes-no-message/ask-yes-no-message.component';
 import { CourseListMessageComponent } from './course-list-message/course-list-message.component';
 import { CourseCardComponent } from './course-card/course-card.component';
+import { TopicWiseScoreMessageComponent } from './topic-wise-score-message/topic-wise-score-message.component';
 
 @NgModule({
-    declarations: [AppComponent, ChatWindowComponent, MessageCardComponent, AskYesNoMessageComponent, CourseListMessageComponent, CourseCardComponent],
+    declarations: [AppComponent, ChatWindowComponent, MessageCardComponent, AskYesNoMessageComponent, CourseListMessageComponent, CourseCardComponent, TopicWiseScoreMessageComponent],
     imports: [BrowserModule],
     providers: [],
     bootstrap: [AppComponent],

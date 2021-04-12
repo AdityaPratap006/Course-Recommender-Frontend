@@ -11,6 +11,10 @@
                 <div class="message-content" *ngIf="shouldDisplayCourses">
                     <app-course-list-message></app-course-list-message>
                 </div>
+
+                <div class="message-content" *ngIf="shouldDisplayTopicWiseScore">
+                    <app-topic-wise-score-message></app-topic-wise-score-message>
+                </div>
             </div>
         </div>
     </div>
