@@ -1,9 +1,8 @@
-<div class="courses-list-grid">
-    <app-course-card
-        *ngFor="let course of courses"
-        [name]="course.name"
-        [image]="course.imageUrl"
-        [price]="course.price"
-    >
+<div *ngIf="!loading" class="courses-list-grid">
+    <app-course-card *ngFor="let course of courses" [name]="course.name" [image]="course.imageUrl"
+        [price]="+course.discountedPrice">
     </app-course-card>
+</div>
+<div *ngIf="loading">
+    <h4>...loading courses</h4>
 </div>

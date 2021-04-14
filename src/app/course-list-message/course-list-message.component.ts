@@ -4,6 +4,8 @@ interface ICourse {
     name: string;
     imageUrl: string;
     price: number;
+    percentage: number;
+    discountedPrice: string;
 }
 
 @Component({
@@ -13,34 +15,31 @@ interface ICourse {
     styles: [':host {width: 100%} '],
 })
 export class CourseListMessageComponent implements OnInit {
-    courses: ICourse[] = [
-        {
-            name: 'Course A',
-            imageUrl:
-                'https://leverageedu.com/blog/wp-content/uploads/2019/08/Course-after-MBA.png',
-            price: 100,
-        },
-        {
-            name: 'Course B',
-            imageUrl:
-                'https://leverageedu.com/blog/wp-content/uploads/2019/08/Course-after-MBA.png',
-            price: 75,
-        },
-        {
-            name: 'Course C',
-            imageUrl:
-                'https://leverageedu.com/blog/wp-content/uploads/2019/08/Course-after-MBA.png',
-            price: 120,
-        },
-        {
-            name: 'Course D',
-            imageUrl:
-                'https://leverageedu.com/blog/wp-content/uploads/2019/08/Course-after-MBA.png',
-            price: 50,
-        },
-    ];
+    courses: ICourse[] = [];
+    loading: boolean = false;
+    apiBaseURL: string = 'https://course-recommendation-api.herokuapp.com';
+    defaultImageUrl: string =
+        'https://leverageedu.com/blog/wp-content/uploads/2019/08/Course-after-MBA.png';
 
     constructor() {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.loading = true;
+
+        const recommendationUrl = `${this.apiBaseURL}/recommend/${1}`;
+        fetch(recommendationUrl)
+            .then((res) => res.json())
+            .then((data: ICourse[]) => {
+                this.courses = data.map((courseInfo) => {
+                    return {
+                        ...courseInfo,
+                        imageUrl: courseInfo.imageUrl || this.defaultImageUrl,
+                    };
+                });
+                this.loading = false;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 }
